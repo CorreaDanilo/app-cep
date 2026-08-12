@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, ActivityIndicator } from 'react-native';
 import { api } from '../../services/api';
 import { styles } from './styles';
+import { ViaCEPResponse } from '../../types/cep';
+import { AddressInfo } from '../../components/AddressInfo';
 
 export function Home() {
   const [cep, setCep] = useState('');
-  const [endereco, setEndereco] = useState<any>(null);
+  const [endereco, setEndereco] = useState<ViaCEPResponse | null>(null);
   const [carregando, setCarregando] = useState(false);
   const [mensagemErro, setMensagemErro] = useState('');
 
@@ -78,11 +80,7 @@ export function Home() {
         <Text style={styles.errorText}>{mensagemErro}</Text>
       )}
 
-      {endereco && (
-        <Text>
-          {endereco.logradouro}, {endereco.localidade} - {endereco.uf}
-        </Text>
-      )}
+      <AddressInfo data={endereco} />
     </View>
   );
 }
