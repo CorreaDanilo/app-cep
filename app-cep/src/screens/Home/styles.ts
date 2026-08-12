@@ -24,4 +24,12 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 16,
   },
+  loadingContainer: {
+    marginTop: 16,
+  },
+  errorText: {
+    color: '#c0392b',
+    marginTop: 12,
+    textAlign: 'center',
+  },
 });
